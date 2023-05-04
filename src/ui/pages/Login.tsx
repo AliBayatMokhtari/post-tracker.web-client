@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLogin } from "../../application/auth/login.use-case";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -72,6 +73,15 @@ const Login = () => {
             >
               Login
             </Button>
+          </div>
+
+          <div className="absolute bottom-5 sm:relative sm:mt-10 sm:bottom-0">
+            <p className="text-sm">
+              Don't have an account?{" "}
+              <Link className="text-blue-500 underline" to="#">
+                Sign up
+              </Link>
+            </p>
           </div>
         </form>
       </div>

@@ -15,7 +15,7 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <button
-      className={`hover:bg-blue-700 disabled:bg-blue-400 flex justify-center items-center py-2 rounded text-white ${
+      className={`hover:bg-blue-700 disabled:bg-blue-400 flex justify-center items-center py-2 disabled:cursor-not-allowed rounded text-white ${
         variant === "danger"
           ? "bg-red-500"
           : variant === "warning"
