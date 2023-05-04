@@ -1,6 +1,8 @@
 import { createHashRouter } from "react-router-dom";
 import BaseLayout from "../layouts/BaseLayout";
-import Login from "../pages/Login";
+import { lazy } from "react";
+
+const Login = lazy(() => import("../pages/Login"));
 
 const router = createHashRouter([
   {
