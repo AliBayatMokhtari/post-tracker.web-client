@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { IAuthenticatedUser } from "../../domain/User";
+import { useStorage } from "../local-storage/localStorage.use-case";
 
 const AuthContext = createContext<IAuthenticatedUser | null>(null);
 const SetAuthContext = createContext<
@@ -17,8 +18,11 @@ const SetAuthContext = createContext<
 export const AuthenticatedUserProvider: FC<PropsWithChildren<{}>> = ({
   children,
 }) => {
+  const storage = useStorage();
   const [authenticatedUser, setAuthenticatedUser] =
-    useState<IAuthenticatedUser>(null!);
+    useState<IAuthenticatedUser>(
+      storage.getObject<IAuthenticatedUser, null>("auth", null)!,
+    );
   return (
     <SetAuthContext.Provider value={setAuthenticatedUser}>
       <AuthContext.Provider value={authenticatedUser}>

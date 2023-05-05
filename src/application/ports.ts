@@ -1,5 +1,5 @@
 import { Tracking } from "../domain/Tracking";
-import { User } from "../domain/User";
+import { IAuthenticatedUser, User } from "../domain/User";
 import { SupabaseClient, SupabaseClientOptions } from "@supabase/supabase-js";
 
 export interface TrackingService {
@@ -15,9 +15,12 @@ export interface AuthService {
     username: Username,
     password: string,
     opts: {
-      loginFn: (username: Username, password: string) => Promise<User>;
+      loginFn: (
+        username: Username,
+        password: string,
+      ) => Promise<IAuthenticatedUser>;
     },
-  ): Promise<User>;
+  ): Promise<IAuthenticatedUser>;
   logout(
     userId: Id,
     opts: {

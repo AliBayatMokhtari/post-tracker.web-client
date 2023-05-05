@@ -21,7 +21,7 @@ const Login = () => {
       setLoading(true);
       await loginUser(username, password);
     } finally {
-      setTimeout(() => setLoading(false), 1000);
+      setLoading(false);
     }
   };
 

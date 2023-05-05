@@ -1,41 +1,41 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../adaptors/auth/authAdaptor";
-import { User } from "../../domain/User";
+import { IAuthenticatedUser } from "../../domain/User";
+import { useSetAuthenticatedUser } from "../context/AuthContext";
+import client from "../supabase/getSupabaseClient";
+import { useToast } from "../notification/notification-use-case";
 
 export function useLogin() {
   const { login } = useAuth();
+  const setAuthenticatedUser = useSetAuthenticatedUser();
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const loginUser = async function (
     username: Username,
     password: string,
-  ): Promise<User> {
+  ): Promise<IAuthenticatedUser> {
     try {
       const res = await login(username, password, {
-        async loginFn(username, password): Promise<User> {
-          const res = await fetch("/auth/local", {
-            method: "POST",
-            body: JSON.stringify({
-              identifier: username,
-              password,
-            }),
+        async loginFn(username, password): Promise<IAuthenticatedUser> {
+          const res = await client.auth.signInWithPassword({
+            email: username,
+            password,
           });
 
-          // login was successful
-          if (res.status === 200) {
-            const json = await res.json();
+          if (res.error) return Promise.reject(null);
 
-            // 1. save user to local storage
-            // 2. fill user context
-            // 3. route to home page
-
-            return Promise.resolve(json);
-          }
-          return Promise.reject(null);
+          return Promise.resolve(res.data.session as IAuthenticatedUser);
         },
       });
 
+      toast.success("Login successful");
+      setAuthenticatedUser(res);
+      navigate("/");
+
       return res;
     } catch (err) {
-      // 1. toast error
+      toast.error("Invalid login credentials");
       return Promise.reject(null);
     }
   };
