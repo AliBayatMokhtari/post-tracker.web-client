@@ -3,8 +3,8 @@ import { createClient } from "@supabase/supabase-js";
 
 export function supabaseGenerator(): SupabaseService {
   return {
-    createClient(supabaseUrl, supabaseKey) {
-      return createClient(supabaseUrl, supabaseKey);
+    createClient(supabaseUrl, supabaseKey, options) {
+      return createClient(supabaseUrl, supabaseKey, options);
     },
   };
 }
