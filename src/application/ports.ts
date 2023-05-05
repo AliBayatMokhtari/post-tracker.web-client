@@ -1,6 +1,6 @@
 import { Tracking } from "../domain/Tracking";
 import { User } from "../domain/User";
-import { SupabaseClient } from "@supabase/supabase-js";
+import { SupabaseClient, SupabaseClientOptions } from "@supabase/supabase-js";
 
 export interface TrackingService {
   getList(): Promise<Tracking[]>;
@@ -32,7 +32,11 @@ export interface NotificationService {
 }
 
 export interface SupabaseService {
-  createClient(supabaseUrl: string, supabaseKey: string): SupabaseClient;
+  createClient(
+    supabaseUrl: string,
+    supabaseKey: string,
+    options?: SupabaseClientOptions<"public">,
+  ): SupabaseClient;
 }
 
 export interface LocalStorageService {
