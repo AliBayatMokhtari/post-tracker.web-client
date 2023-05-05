@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 
 const Provider = () => {
-  return <ToastContainer theme="colored" position="bottom-right" />;
+  return <ToastContainer theme="colored" position="top-right" />;
 };
 
 export default function getNotificationProvider() {
