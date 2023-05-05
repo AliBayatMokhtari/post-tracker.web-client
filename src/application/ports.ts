@@ -24,3 +24,8 @@ export interface AuthService {
     },
   ): Promise<void>;
 }
+
+export interface NotificationService {
+  success(msg: string): void;
+  error(msg: string): void;
+}
