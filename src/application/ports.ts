@@ -1,5 +1,6 @@
 import { Tracking } from "../domain/Tracking";
 import { User } from "../domain/User";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 export interface TrackingService {
   getList(): Promise<Tracking[]>;
@@ -28,4 +29,8 @@ export interface AuthService {
 export interface NotificationService {
   success(msg: string): void;
   error(msg: string): void;
+}
+
+export interface SupabaseService {
+  createClient(supabaseUrl: string, supabaseKey: string): SupabaseClient;
 }
