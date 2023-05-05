@@ -34,3 +34,10 @@ export interface NotificationService {
 export interface SupabaseService {
   createClient(supabaseUrl: string, supabaseKey: string): SupabaseClient;
 }
+
+export interface LocalStorageService {
+  setObject<T extends object>(key: string, value: T): void;
+  getObject<T, TDefault>(key: string, defaultValue: TDefault): T | TDefault;
+  setString(key: string, value: string): void;
+  getString(key: string): string;
+}
