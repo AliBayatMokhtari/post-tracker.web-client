@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
 export default function AddTrackingListButton() {
+  const navigate = useNavigate();
+
   const onClick = () => {
-    console.log("btn clicked");
+    navigate("/add-tracking");
   };
 
   return (
