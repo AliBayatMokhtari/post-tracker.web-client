@@ -17,7 +17,7 @@ export default function AddTrackingPage() {
           <div className="absolute top-3 start-3 p-1 rounded-full hover:bg-gray-100">
             <BackButton />
           </div>
-          <h1 className="absolute top-7 text-2xl font-bold underline text-slate-900">
+          <h1 className="absolute top-[10%] text-2xl font-bold underline text-slate-900">
             New Tracking
           </h1>
           <div>
