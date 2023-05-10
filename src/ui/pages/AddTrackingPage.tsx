@@ -14,7 +14,7 @@ export default function AddTrackingPage() {
           className="flex flex-col justify-center items-center w-[90%] h-[90%] bg-white rounded-lg shadow-md space-y-4 relative"
           onSubmit={onSubmit}
         >
-          <div className="absolute top-3 start-3">
+          <div className="absolute top-3 start-3 p-1 rounded-full hover:bg-gray-100">
             <BackButton />
           </div>
           <h1 className="absolute top-7 text-2xl font-bold underline text-slate-900">
